@@ -1,0 +1,8 @@
+<div class="main">
+    <div class="weather-container">
+        <app-weather [cities]="cities" (onWeatherCalculated)="getWeather($event)"></app-weather>
+    </div>
+    <div class="weather-summary-container">
+        <app-weather-summary [weatherSummary]="weatherSummary"></app-weather-summary>
+    </div>
+</div>

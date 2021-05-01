@@ -1,0 +1,21 @@
+@import '~bootstrap/scss/bootstrap';
+
+body {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    flex-grow: 1;
+}
+
+.app-main {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.app-logo {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    width: 100%;
+}

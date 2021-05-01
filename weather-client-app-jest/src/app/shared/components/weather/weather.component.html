@@ -1,0 +1,36 @@
+<form [formGroup]="weatherForm" class="text-center border border-light p-5">
+
+    <p class="h4 mb-4">Check Weather</p>
+    <div formArrayName="weather_items">
+        <div *ngFor="let item of weatherItems.controls; let weatherIndex=index" [formGroupName]="weatherIndex">
+            <div class="form-row mb-4">
+                <div class="col">
+                    <select class="form-control weather-city-input" formControlName="city">
+                        <option value="" disabled selected>Select City</option>
+                        <option *ngFor="let city of cities" [ngValue]="city">
+                            {{ city.name }}
+                        </option>
+                    </select>
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control weather-units-input "
+                        [ngClass]="{ 'is-invalid': submitted && item.get('units').errors }" formControlName="units"
+                        placeholder="Units(standart, metric, etc)" required>
+                </div>
+                <span class="col">
+                    <button type="button" (click)="submit(weatherIndex)" class="btn btn-success btn-number">
+                        <fa-icon [icon]="plusIcon"></fa-icon>
+                    </button>
+                </span>
+            </div>
+            <div class="form-row mb-4" *ngIf="item.get('weatherInfo').value!==''">
+                <div class="col-12 weather-info-container">
+                        {{item.get('city').value.name}} {{' '+ item.get('weatherInfo').value}}
+                    <input type="image" [src]="item.get('weatherImg').value" formControlName="weatherInfo"
+                        class="weather-icon align-bottom">
+                </div>
+
+            </div>
+        </div>
+    </div>
+</form>
